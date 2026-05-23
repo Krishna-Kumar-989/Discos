@@ -1,0 +1,33 @@
+qdrant:
+  vectordb_dir: "../LocalState"
+  collection_prefix: "discord_"
+  prefer_grpc: false
+
+embedding:
+  model_name: "all-MiniLM-L6-v2"
+  batch_size: 32
+
+bm25:
+  k1: 1.2
+  b: 0.75
+
+retrieval:
+  mode: "hybrid" # "hybrid", "semantic", "lexical"
+  limit: 5
+  prefetch_limit: 50
+  score_threshold: null # similarity threshold
+  rerank: false         # Stage-2 reranking by default
+  rerank_prefetch_limit: 20 #  hits to retrieve from Stage-1 before reranking
+  rrf:
+    k: 60
+    dense_weight: 1.0
+    sparse_weight: 1.0
+  filters: {} # key-value metadata filters
+
+reranker:
+  model_name: "cross-encoder/ms-marco-MiniLM-L-6-v2"
+  batch_size: 32
+
+logging:
+  level: "INFO"
+  log_file: "../logs/retrieval.log"

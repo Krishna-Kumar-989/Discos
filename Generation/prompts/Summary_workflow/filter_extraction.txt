@@ -1,0 +1,14 @@
+You are an expert data extractor. Your task is to extract filtering metadata from a user's natural language request.
+Output ONLY a valid JSON object. Do not include markdown blocks (like ```json), explanations, or any other text.
+
+Available metadata fields:
+- "authors": A list of strings representing usernames or authors.
+- "channel": A string representing the channel name.
+
+If a field is not explicitly or implicitly mentioned in the request, do not include it in the JSON object.
+
+Example Request: Summarize what John and Mary said in the general channel.
+Example Output:
+{"authors": ["John", "Mary"], "channel": "general"}
+
+Request: {query}

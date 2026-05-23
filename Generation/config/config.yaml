@@ -1,0 +1,32 @@
+generation:
+  workflow_type: "QnA_workflow"
+  QnA_workflow:
+    provider: "mock" # "openai", "anthropic", "gemini", "ollama", "groq", "mock"
+    model: "mock-model"
+    temperature: 0.7
+    max_tokens: 1000
+    prompt_template: "QnA_workflow/default_rag.txt"
+    enable_query_rewrite: false
+  Summary_workflow:
+    provider: "mock"
+    model: "mock-model"
+    temperature: 0.7
+    max_tokens: 1000
+    filter_extraction_template: "Summary_workflow/filter_extraction.txt"
+    summarization_template: "Summary_workflow/summarization.txt"
+
+retrieval:
+  mode: "hybrid" # "semantic", "lexical", "sparse", "hybrid"
+  limit: 5
+  rerank: true
+  rerank_prefetch_limit: 20
+
+cache:
+  document_store_ttl_seconds: 3600
+
+storage:
+  cache_ttl_seconds: 3600 # Document cache time to live
+
+logging:
+  level: "INFO"
+  log_file: "../logs/generation.log"

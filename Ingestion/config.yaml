@@ -1,0 +1,30 @@
+#Data Ingestion Configuration
+
+# Directories
+data_dir: "../scrapedData/discord_exports"
+vectordb_dir: "../LocalState"
+
+# File configuration
+supported_extensions:
+  - ".json"
+
+# Chunking Parameters for sliding window
+chunking:
+  chunk_size: 1000           
+  overlap: 200                
+  min_chunk_length: 50        
+
+# Embedding settings
+embedding:
+  model_name: "all-MiniLM-L6-v2"  
+  batch_size: 32                  #no. of chunks to embed in one batch
+
+# Vector Database Config (Qdrant)
+qdrant:
+  collection_prefix: "discord_" 
+  prefer_grpc: false
+
+# General settings
+logging:
+  level: "INFO"
+  log_file: "../logs/ingestion.log"
