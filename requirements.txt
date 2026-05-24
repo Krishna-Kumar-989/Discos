@@ -26,3 +26,10 @@ redis>=5.0.0
 
 # Object Store Providers
 minio>=7.2.0
+
+# Database Drivers & ORM
+SQLAlchemy>=2.0.0
+aiosqlite>=0.19.0
+asyncpg>=0.29.0
+aiomysql>=0.2.0
+motor>=3.3.0
